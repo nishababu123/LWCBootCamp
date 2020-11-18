@@ -1,0 +1,32 @@
+<template> 
+    <template if:false={showTom}>   
+        <!--Display Jerry's Image-->
+        <lightning-card title="" icon-name="custom:custom19">
+            <div>
+                <div class="slds-m-around_medium">
+                    <img src={image}>
+                    <!-- Display button with label:Show Tom -->
+                    <lightning-button variant="Brand" label="Show Tom" title="Primary action" 
+                            onclick={handleClick} class="slds-m-left_x-large">
+                    </lightning-button>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+
+    <template if:true={showTom}>
+        
+        <!--Display Tom's Image-->
+        <lightning-card title="" icon-name="custom:custom19">
+            <div class="slds-m-around_medium">
+                <img src={image}>
+                <!-- Display button with label:Show Jerry -->
+                <lightning-button variant="Brand" label="Show Jerry" title="Primary action" 
+                onclick={handleClick} class="slds-m-left_x-large">
+                </lightning-button>
+            </div>
+        </lightning-card>
+
+    </template>
+    
+</template>
