@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="forEachDemo" icon-name="custom:custom19">
+    <ul>
+        <p>INDEX   ID       Name        Email</p>
+
+      <template for:each={contacts} for:item="con" for:index="index">
+        <li key={con.Id}>
+          {index}       {con.Id}      {con.Name}    {con.Email}
+        </li>
+      </template>
+    </ul>
+    </lightning-card>>
+   
+    <lightning-card title="forEachDemo" icon-name="custom:custom19">
+
+          <lightning-datatable data={contacts} columns={columns} key-field="Id"  ></lightning-datatable>       
+                </lightning-card>
+
+</template>
