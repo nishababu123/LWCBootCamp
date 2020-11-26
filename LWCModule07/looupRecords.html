@@ -1,0 +1,63 @@
+<template>
+    <template if:true={showSearch}>
+      <lightning-card title="Search Account" icon-name="standard:account">
+            <div class="slds-m-around_medium">
+                <lightning-input type="search" onchange={handleKeyChange} class="slds-m-bottom_small" label="Search" placeholder="Enter account name" value={searchKey}></lightning-input>
+                <template if:true={accounts}>
+                    <template for:each={accounts} for:item="account">
+                        <lightning-card icon-name="standard:account" key={account.Id}>
+                            <lightning-button
+                        label={account.Name}
+                        onclick={doSearchContacts}
+                    ></lightning-button>
+                    <br>
+                            {account.AccountNumber} - {account.Industry} - {account.Active__c}
+                        </lightning-card>
+                    </template>
+                </template>
+                <template if:true={error}>
+                    <h1> No Records!!</h1>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+
+        
+
+    <template if:false={showSearch}>
+        <lightning-card title="Selected Account" icon-name="standard:account">
+            <div class="slds-m-around_medium">
+                
+                        <div>
+                            {searchContactKey}</div>
+
+                <div class="slds-align_absolute-center">
+                <lightning-button variant="brand" label="Reset Search" title="reset" onclick={resetSearch} class="slds-m-left_x-small"></lightning-button>
+            </div>   
+
+            <lightning-card title="Associated Contacts" icon-name="standard:contact">
+                <table class="slds-table slds-table_bordered">
+                    <tr>
+                        <th scope="col"> Name</th>
+                        <th scope="col"> Tite</th>
+                        <th scope="col"> Email</th>
+                        <th scope="col"> Phone</th>
+                    </tr>
+                    <template if:true={contacts}>
+                    <template for:each={contacts} for:item="con" for:index="index">
+                    <tr key={con.Id}>
+                        <td>{con.Name}</td>
+                        <td>{con.Title}</td>
+                        <td>{con.Email}</td>
+                        <td>{con.Phone}</td>   
+                    </tr>
+                    </template>
+                </template>
+            </table>
+        </lightning-card>
+  
+               
+    </div>
+    </lightning-card>
+    </template>
+   </template>
