@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Parent" icon-name="standard:person_account">
+        <div class="slds-grid slds-gutters">
+            <!--Column for display-->
+            <div class="slds-col">
+                
+		<!--Based on the child component label, the select1 is modified in the parent component,computed in jsfile-->
+                <p class="slds-p-left_small slds-p-bottom_x-small">Child One:{select1}</p>
+                
+		<!--invoking the child component to display in the same column.oncustomclick is the custom event in child-->
+                <c-child-cmp childnumber = "Child One" oncustomclick ={handleChildClick1}></c-child-cmp>
+                
+		<!--While clicking the button in child, calls a method, method have the custom event, which in turn invoke the
+                handleChildClick1 method in ParentCmp.js-->
+
+            </div>
+            <div class="slds-col">
+                <p class="slds-p-left_small slds-p-bottom_x-small">Child Two:{select2}</p>
+                <c-child-cmp childnumber = "Child Two" oncustomclick ={handleChildClick2}></c-child-cmp>
+            </div>
+            <div class="slds-col">
+                <p class="slds-p-left_small slds-p-bottom_x-small">Child Three:{select3}</p>
+                <c-child-cmp childnumber = "Child Three" oncustomclick ={handleChildClick3}></c-child-cmp>
+            </div>   
+        </div>
+    </lightning-card>
+</template>
