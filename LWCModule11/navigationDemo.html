@@ -1,0 +1,98 @@
+<template>
+    <lightning-card title = "Quick Record Creation"> 
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+           <!--Picklist--> 
+        <lightning-combobox
+                name="object"
+                label="Object"
+                value={value}
+                placeholder="Choose Object from drop down"
+                options={options}
+                onchange={handleChange} ></lightning-combobox>
+    
+        </div>
+    </div>
+    <br>
+    <br>
+       
+        <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            
+            <!--Display the Quick Create and New button-->
+            <lightning-button class="slds-m-top_small" onclick={handleQuickCreate} variant ="brand-outline" label="Quick Create"
+            value ={value} slot="actions"></lightning-button>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <lightning-button class="slds-m-top_small" onclick={handleNewCreate} variant ="brand-outline" label="New" value={value}
+            slot="actions"></lightning-button>
+
+            <!--Account:Start-->
+
+                <lightning-record-edit-form object-api-name="Account" onsuccess={handleAccSuccess}>
+                    <template if:true={showAccount}>
+                        
+                        <lightning-input-field field-name="Name" class="accnt"></lightning-input-field>
+                      
+                        <div class="slds-align_absolute-center">
+                        
+                        <lightning-button class="slds-p-top_small" onclick={handleAccSuccess} label="Cancel" name="resetAccount"></lightning-button>
+                        <lightning-button class="slds-p-top_small slds-p-left_x-small" type="submit" variant="brand" label="Save" onclick={handleSubmit} name="saveAccount"></lightning-button>
+                        </div>
+                    </template> 
+                </lightning-record-edit-form>
+           
+        </div>
+    </div>
+
+    <!--Account-->
+
+    <!--Contact:Start-->
+    
+        <template if:true={showContact}>
+            <lightning-record-edit-form object-api-name="Contact" onsuccess={handleConSuccess}>
+                <lightning-messages></lightning-messages>
+            <lightning-input-field field-name="Name" class="cont">
+            </lightning-input-field>
+            
+            <div class="slds-align_absolute-center">
+                <lightning-button class="slds-p-top_small" onclick={handleConSuccess}
+                    label="Cancel" name="resetContact">
+                </lightning-button>
+                <lightning-button class="slds-p-top_small slds-p-left_x-small" type="submit" variant="brand" label="Save" onclick={handleSubmit} name="saveContact">
+                </lightning-button>
+            </div>
+    </lightning-record-edit-form>
+</template>
+
+<!--Contact-->
+<!--Opportunty:Start-->
+    
+    <template if:true={showOpportunity}>
+    <lightning-record-edit-form object-api-name="Opportunity" onsuccess={handleOpptSuccess}>
+        <lightning-messages></lightning-messages>
+        <lightning-button class="slds-m-top_small" onclick={ViewAllOpportunityFields} label="Show All Opportunity Fields"
+                    slot="actions"></lightning-button>
+            <lightning-input-field field-name="Name" class="oppty">
+            </lightning-input-field>
+            <lightning-input-field field-name="StageName" class="oppty">
+            </lightning-input-field>
+            <lightning-input-field field-name="CloseDate" class="oppty">
+            </lightning-input-field>
+            <lightning-input-field field-name="AccountId" class="oppty">
+            </lightning-input-field>
+           
+            <div class="slds-align_absolute-center">
+                <lightning-button class="slds-p-top_small" onclick={handleOpptSuccess}
+                    label="Cancel" name="resetOppty">
+                </lightning-button>
+                <lightning-button class="slds-p-top_small slds-p-left_x-small" type="submit" variant="brand" label="Save" onclick={handleSubmit} value="saveOppty">
+                </lightning-button>
+            </div>
+    </lightning-record-edit-form>
+</template>
+<!--Opportunity-->
+</lightning-card>   
+</template>
